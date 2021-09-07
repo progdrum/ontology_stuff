@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://progdrum.github.io/dc_inferences2.owl"
+         xmlns="https://progdrum.github.io/dc_inferences2.owl#">
+
+<owl:Ontology rdf:about="https://progdrum.github.io/dc_inferences2.owl"/>
+
+<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#bottomObjectProperty">
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Cymbal">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Crash">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Ride">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#FlatRide">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Splash">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#HiHat">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#China">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Pang">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Swish">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Lion">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Efx">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Gong">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#TamTam">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#NippleGong">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of">
+  <owl:equivalentProperty rdf:resource="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#has_weight">
+  <owl:equivalentProperty rdf:resource="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing">
+  <owl:equivalentProperty rdf:resource="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+  <owl:equivalentProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Lathed">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:equivalentClass rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#Unlathed"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Unlathed">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:equivalentClass rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#Lathed"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://progdrum.github.io/drumheads_cymbals.owl#Hybrid">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#is_made_of"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_weight"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://progdrum.github.io/drumheads_cymbals.owl#has_lathing"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+
+</rdf:RDF>

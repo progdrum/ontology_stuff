@@ -1,0 +1,596 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://progdrum.github.io/drumheads_cymbals.owl"
+         xmlns="https://progdrum.github.io/drumheads_cymbals.owl#">
+
+<owl:Ontology rdf:about="https://progdrum.github.io/drumheads_cymbals.owl"/>
+
+<owl:ObjectProperty rdf:about="#has_plies">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Plies"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_surface_type">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Surface"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_dampening">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Dampening"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_manufacturer">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#Manufacturer"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_type">
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#CymbalType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_made_of">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#Alloy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_weight">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#Weight"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_lathing">
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#Lathing"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#is_snare_side">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#thickness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#hyx_1Ply"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#ply1_thickness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#hyx_3Ply"/>
+  <rdfs:domain rdf:resource="#hyx_2Ply"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#ply2_thickness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#hyx_3Ply"/>
+  <rdfs:domain rdf:resource="#hyx_2Ply"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#ply3_thickness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#hyx_3Ply"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#dot_thickness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Dot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has_hybrid_lathing">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Drumhead">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Plies">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#hyx_1Ply">
+  <rdfs:subClassOf rdf:resource="#Plies"/>
+</owl:Class>
+
+<owl:Class rdf:about="#hyx_2Ply">
+  <rdfs:subClassOf rdf:resource="#Plies"/>
+</owl:Class>
+
+<owl:Class rdf:about="#hyx_3Ply">
+  <rdfs:subClassOf rdf:resource="#Plies"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Surface">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Coated">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Clear">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Suede">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ebony">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SimulatedSkin">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Frosted">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hazy">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Etched">
+  <rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Dampening">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InlayRing">
+  <rdfs:subClassOf rdf:resource="#Dampening"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Dot">
+  <rdfs:subClassOf rdf:resource="#Dampening"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CenterDot">
+  <rdfs:subClassOf rdf:resource="#Dot"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ReverseDot">
+  <rdfs:subClassOf rdf:resource="#Dot"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Holes">
+  <rdfs:subClassOf rdf:resource="#Dampening"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ring">
+  <rdfs:subClassOf rdf:resource="#Dampening"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Oil">
+  <rdfs:subClassOf rdf:resource="#Dampening"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Manufacturer">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Remo">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Evans">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Aquarian">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Other">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cymbal">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CymbalType">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Crash">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ride">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FlatRide">
+  <rdfs:subClassOf rdf:resource="#Ride"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Splash">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HiHat">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#China">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Pang">
+  <rdfs:subClassOf rdf:resource="#China"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Swish">
+  <rdfs:subClassOf rdf:resource="#China"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lion">
+  <rdfs:subClassOf rdf:resource="#China"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Efx">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Gong">
+  <rdfs:subClassOf rdf:resource="#CymbalType"/>
+</owl:Class>
+
+<owl:Class rdf:about="#TamTam">
+  <rdfs:subClassOf rdf:resource="#Gong"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NippleGong">
+  <rdfs:subClassOf rdf:resource="#Gong"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Alloy">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Brass">
+  <rdfs:subClassOf rdf:resource="#Alloy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#B8">
+  <rdfs:subClassOf rdf:resource="#Alloy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#B10">
+  <rdfs:subClassOf rdf:resource="#Alloy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#B20">
+  <rdfs:subClassOf rdf:resource="#Alloy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Weight">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PaperThin">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Thin">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MediumThin">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Medium">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MediumHeavy">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Heavy">
+  <rdfs:subClassOf rdf:resource="#Weight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lathing">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lathed">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Lathing"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_hybrid_lathing"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Unlathed">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Lathing"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_hybrid_lathing"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+        </owl:Restriction>
+        <owl:Class>
+          <owl:complementOf>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#has_lathing"/>
+              <owl:someValuesFrom rdf:resource="#Lathed"/>
+            </owl:Restriction>
+          </owl:complementOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Hybrid">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Lathing"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#has_hybrid_lathing"/>
+              <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#has_lathing"/>
+              <owl:someValuesFrom rdf:resource="#Lathed"/>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#has_lathing"/>
+              <owl:someValuesFrom rdf:resource="#Unlathed"/>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Bosphorus">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Istanbul">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Dream">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Meinl">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sabian">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Zildjian">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Paiste">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Wuhan">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Stagg">
+  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+</owl:Class>
+
+<Drumhead rdf:about="#drumhead1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Drumhead>
+
+<hyx_2Ply rdf:about="#hyx_2ply1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</hyx_2Ply>
+
+<Coated rdf:about="#coated1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Coated>
+
+<Drumhead rdf:about="#drumhead2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_plies rdf:resource="#hyx_2ply1"/>
+  <has_surface_type rdf:resource="#coated1"/>
+</Drumhead>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Bosphorus"/>
+    <rdf:Description rdf:about="#Istanbul"/>
+    <rdf:Description rdf:about="#Dream"/>
+    <rdf:Description rdf:about="#Meinl"/>
+    <rdf:Description rdf:about="#Sabian"/>
+    <rdf:Description rdf:about="#Zildjian"/>
+    <rdf:Description rdf:about="#Paiste"/>
+    <rdf:Description rdf:about="#Wuhan"/>
+    <rdf:Description rdf:about="#Stagg"/>
+    <rdf:Description rdf:about="#Other"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#PaperThin"/>
+    <rdf:Description rdf:about="#Thin"/>
+    <rdf:Description rdf:about="#MediumThin"/>
+    <rdf:Description rdf:about="#Medium"/>
+    <rdf:Description rdf:about="#MediumHeavy"/>
+    <rdf:Description rdf:about="#Heavy"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Brass"/>
+    <rdf:Description rdf:about="#B8"/>
+    <rdf:Description rdf:about="#B10"/>
+    <rdf:Description rdf:about="#B20"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Ride"/>
+    <rdf:Description rdf:about="#HiHat"/>
+    <rdf:Description rdf:about="#China"/>
+    <rdf:Description rdf:about="#Gong"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Crash"/>
+    <rdf:Description rdf:about="#HiHat"/>
+    <rdf:Description rdf:about="#China"/>
+    <rdf:Description rdf:about="#Gong"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Remo"/>
+    <rdf:Description rdf:about="#Evans"/>
+    <rdf:Description rdf:about="#Aquarian"/>
+    <rdf:Description rdf:about="#Other"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Coated"/>
+    <rdf:Description rdf:about="#Clear"/>
+    <rdf:Description rdf:about="#Suede"/>
+    <rdf:Description rdf:about="#Ebony"/>
+    <rdf:Description rdf:about="#SimulatedSkin"/>
+    <rdf:Description rdf:about="#Frosted"/>
+    <rdf:Description rdf:about="#Hazy"/>
+    <rdf:Description rdf:about="#Etched"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#hyx_1Ply"/>
+    <rdf:Description rdf:about="#hyx_2Ply"/>
+    <rdf:Description rdf:about="#hyx_3Ply"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#PaperThin"/>
+    <rdf:Description rdf:about="#Thin"/>
+    <rdf:Description rdf:about="#MediumThin"/>
+    <rdf:Description rdf:about="#Medium"/>
+    <rdf:Description rdf:about="#MediumHeavy"/>
+    <rdf:Description rdf:about="#Heavy"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Brass"/>
+    <rdf:Description rdf:about="#B8"/>
+    <rdf:Description rdf:about="#B10"/>
+    <rdf:Description rdf:about="#B20"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Ride"/>
+    <rdf:Description rdf:about="#HiHat"/>
+    <rdf:Description rdf:about="#China"/>
+    <rdf:Description rdf:about="#Gong"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Crash"/>
+    <rdf:Description rdf:about="#HiHat"/>
+    <rdf:Description rdf:about="#China"/>
+    <rdf:Description rdf:about="#Gong"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Remo"/>
+    <rdf:Description rdf:about="#Evans"/>
+    <rdf:Description rdf:about="#Aquarian"/>
+    <rdf:Description rdf:about="#Other"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Coated"/>
+    <rdf:Description rdf:about="#Clear"/>
+    <rdf:Description rdf:about="#Suede"/>
+    <rdf:Description rdf:about="#Ebony"/>
+    <rdf:Description rdf:about="#SimulatedSkin"/>
+    <rdf:Description rdf:about="#Frosted"/>
+    <rdf:Description rdf:about="#Hazy"/>
+    <rdf:Description rdf:about="#Etched"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#hyx_1Ply"/>
+    <rdf:Description rdf:about="#hyx_2Ply"/>
+    <rdf:Description rdf:about="#hyx_3Ply"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>
