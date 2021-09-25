@@ -26,36 +26,18 @@
 ;; Lay out the drumhead-related classes
 (with [onto]
 
-  (defentity "Drumhead" "Thing"
+  (defentity "StruckObject" "Thing"
+    {:comments ["Objects that are struck."
+                "Parent class of all struck objects."]
+     :version-info ["0.1"]})
+
+  (defentity "Drumhead" "StruckObject"
     {:comments ["Generic drumhead class"]
      :version-info ["0.1"]})
 
   (defclass is-snare-side [(>> Drumhead bool) FunctionalProperty])
-
-  (defentity "Plies" "Thing"
-    {:comments ["Drum heads have one or more plies of film."
-                "Number of plies a drumhead has"]
-     :version-info ["0.1"]})
-
-  (defclass has-plies [(>> Drumhead Plies) FunctionalProperty])
-
-  (defentity "OnePly" "Plies"
-    {:equivalent-to [(& Plies (has-plies.exactly 1))]
-     :version-info  ["0.1"]})
-  (defentity "TwoPly" "Plies"
-    {:equivalent-to [(& Plies (has-plies.exactly 2))]
-     :version-info ["0.1"]})
-  (defentity "ThreePly" "Plies"
-    {:equivalent-to [(& Plies (has-plies.exactly 3))]
-     :version-info ["0.1"]})
-  (AllDisjoint [OnePly TwoPly ThreePly])
-  
+  (defclass has-plies [(>> Drumhead int) FunctionalProperty])
   (defclass has-thickness [(>> Drumhead float) FunctionalProperty])
-  (defclass has-twoply-ply1-thickness [(>> TwoPly float) FunctionalProperty])
-  (defclass has-twoply-ply2-thickness [(>> TwoPly float) FunctionalProperty])
-  (defclass has-threeply-ply1-thickness [(>> ThreePly float) FunctionalProperty])
-  (defclass has-threeply-ply2-thickness [(>> ThreePly float) FunctionalProperty])
-  (defclass has-threeply-ply3-thickness [(>> ThreePly float) FunctionalProperty])
 
   (defentity "Surface" "Thing"
     {:comments ["Drum heads can have a variety of surfaces that affect the feel, attack, and tone."]
@@ -84,7 +66,9 @@
     {:version-info ["0.1"]})
   (AllDisjoint [Coated Clear Suede Ebony SimulatedSkin Frosted Hazy Etched])
 
-  (defclass has-surface-type [(>> Drumhead Surface) FunctionalProperty])
+  (defclass has-surface [(>> Drumhead Surface) FunctionalProperty])
+  (defclass is-surface-of [(>> Surface Drumhead) InverseFunctionalProperty]
+    (setv inverse-property has-surface))
   
   (defentity "Dampening" "Thing"
     {:comments ["Dampening mechanisms help to reduce unwanted overtones."
@@ -92,29 +76,26 @@
      :version-info ["0.1"]})
   (defentity "InlayRing" "Dampening"
     {:comments ["These are plastic rings, usually underneath the head."]
-     :version-info ["0.1"]
-     :see-also ["Ring"]})
+     :version-info ["0.1"]})
   (defentity "Dot" "Dampening"
     {:comments ["An additional ply in the middle of the head that is smaller in diameter than the head."]
      :version-info ["0.1"]})
   (defentity "CenterDot" "Dot"
-    {:version-info ["0.1"]
-     :see-also ["Dot" "ReverseDot"]})
+    {:version-info ["0.1"]})
   (defentity "ReverseDot" "Dot"
-    {:version-info ["0.1"]
-                  :see-also ["Dot" "CenterDot"]})
+    {:version-info ["0.1"]})
   (defentity "Holes" "Dampening"
     {:comments ["Holes allow additional air to escape upon striking."]
      :version-info ["0.1"]})
   (defentity "Ring" "Dampening"
-    {:version-info ["0.1"]
-     :see-also "InlayRing"})
+    {:version-info ["0.1"]})
   (defentity "Oil" "Dampening"
     {:comments ["Requires at least two plies."]
-     :version-info ["0.1"]
-     :see-also ["TwoPly" "ThreePly"]})
+     :version-info ["0.1"]})
 
   (defclass has-dampening [(>> Drumhead Dampening)])
+  (defclass is-dampening-for [(>> Dampening Drumhead) InverseFunctionalProperty]
+    (setv inverse-property has-dampening))
   (defclass dot-thickness [(>> Dot float) FunctionalProperty])
 
   (defentity "Manufacturer" "Thing"
@@ -127,19 +108,20 @@
     {:version-info ["0.1"]})
   (defentity "Other" "Manufacturer"
     {:version-info ["0.1"]})
-  (AllDisjoint [Remo Evans Aquarian Other]))
+  (AllDisjoint [Remo Evans Aquarian Other])
 
-(defclass has-manufacturer [(>> Drumhead Manufacturer) FunctionalProperty])
+  (defclass has-manufacturer [(>> StruckObject Manufacturer) FunctionalProperty])
+  (defclass is-manufacturer-of [(>> Manufacturer StruckObject)]
+    (setv inverse-property has-manufacturer)))
 
 ;; Lay out the cymbal-related classes
 (with [onto]
 
-  (defentity "Cymbal" "Thing"
+  (defentity "Cymbal" "StruckObject"
     {:comments ["Generic cymbal class"]
      :version-info ["0.1"]})
   (defentity "Crash" "Cymbal"
     {:comments ["May also be rideable"]
-     :see-also ["Ride"]
      :version-info ["0.1"]})
   (defentity "Ride" "Cymbal"
     {:comments ["May also be crashable."]
@@ -147,23 +129,15 @@
      :version-info ["0.1"]})
   (defentity "FlatRide" "Ride"
     {:comments ["Ride cymbals without a pronounced bell"]
-     :see-also ["Ride"]
      :version-info ["0.1"]})
   (defentity "CrashRide" "Cymbal"
     {:equivalent-to [(& Crash Ride)]
-     :comments ["A cymbal made for both crashing and riding"]
-     :see-also ["Crash" "Ride"]})
+     :comments ["A cymbal made for both crashing and riding"]})
   (defentity "Splash" "Cymbal"
     {:version-info ["0.1"]})
   (defentity "HiHat" "Cymbal"
     {:version-info ["0.1"]})
   (defentity "China" "Cymbal"
-    {:version-info ["0.1"]})
-  (defentity "Pang" "China"
-    {:version-info ["0.1"]})
-  (defentity "Swish" "China"
-    {:version-info ["0.1"]})
-  (defentity "Lion" "China"
     {:version-info ["0.1"]})
   (defentity "Efx" "Cymbal"
     {:comments ["Miscellaneous effects cymbals"]
@@ -199,44 +173,10 @@
   (AllDisjoint [Brass B8 B10 B20])
 
   (defclass is-made-of [(>> Cymbal Alloy) FunctionalProperty])
-
-  (defentity "Weight" "Thing"
-    {:comments ["Cymbal weight is a major determiner of tone."
-                "Thinner cymbals tend to be darker-sounding."
-                "Thicker cymbals tend to be louder, brighter, and more cutting."]
-     :version-info ["0.1"]})
-  (defentity "PaperThin" "Weight"
-    {:version-info ["0.1"]})
-  (defentity "Thin" "Weight"
-    {:version-info ["0.1"]})
-  (defentity "MediumThin" "Weight"
-    {:version-info ["0.1"]})
-  (defentity "Medium" "Weight"
-    {:version-info ["0.1"]})
-  (defentity "MediumHeavy" "Weight"
-    {:version-info ["0.1"]})
-  (defentity "Heavy" "Weight"
-    {:version-info ["0.1"]})
-  (AllDisjoint [PaperThin Thin MediumThin Medium MediumHeavy Heavy])
-
-  (defclass has-weight [(>> Cymbal Weight) FunctionalProperty])
-  
-  (defentity "Lathing" "Thing"
-    {:comments ["Lathing or lack thereof on a cymbal"]
-     :version-info ["0.1"]})
-
-  (defclass has-lathing [(>> Cymbal Lathing)])
+  (defclass has-weight [(>> Cymbal str) FunctionalProperty])
+  (defclass is-lathed [(>> Cymbal bool)])
   (defclass has-hybrid-lathing [(>> Cymbal bool) FunctionalProperty])
   
-  (defentity "Unlathed" "Lathing"
-    {:version-info ["0.1"]})
-  (defentity "Lathed" "Lathing"
-    {:version-info ["0.1"]})
-  (defentity "Hybrid" "Lathing"
-    {:comments ["A cymbal that is partially lathed"]
-     :version-info ["0.1"]
-     :see-also ["Lathed" "Unlathed"]})
-
   (defentity "Bosphorus" "Manufacturer"
     {:version-info ["0.1"]})
   (defentity "Istanbul" "Manufacturer"
@@ -257,23 +197,70 @@
     {:version-info ["0.1"]})
   (defentity "Other" "Manufacturer"
     {:version-info ["0.1"]})
-  (AllDisjoint [Bosphorus Istanbul Dream Meinl Sabian Zildjian Paiste Wuhan Stagg Other])
- 
- (defclass has-manufacturer [(>> Cymbal Manufacturer) FunctionalProperty]))
+  (AllDisjoint [Bosphorus Istanbul Dream Meinl Sabian Zildjian Paiste Wuhan Stagg Other]))
 
 ;; Add some other classes that combine classes and properties
 (with [onto]
 
   (defentity "ThickHead" "Drumhead"
-    {:equivalent-to [(| (& Drumhead (has-thickness.min 11 float))
-                        (& Drumhead (| TwoPly ThreePly)))]
-     :version-info ["0.1"]
-     :see-also ["Drumhead" "Plies" "TwoPly" "ThreePly"]})
+    {:equivalent-to [(& Drumhead (|
+                                   (>= has-thickness 12)
+                                   (>= has-plies 2)))]
+     :version-info ["0.1"]})
 
   (defentity "ThinHead" "Drumhead"
-    {:equivalent-to (& Drumhead OnePly (has-thickness.max 10 float))
-     :version-info ["0.1"]
-     :see-also ["Drumhead" "Plies" "OnePly"]}))
+    {:equivalent-to (& Drumhead
+                       (<= has-thickness 11))
+     :version-info ["0.1"]}))
 
-(onto.save "test_ontologies/dcyms.owl")
+
+;; Create some drum head instances
+(setv remo-emperor-clear (Drumhead
+                           "Emperor"
+                           :has-plies 2
+                           :has-thickness 14
+                           :has-surface (Clear)
+                           :has-manufacturer (Remo))
+      aquarian-triple-threat (Drumhead
+                               "Triple_Threat"
+                               :has-plies 3
+                               :has-thickness 21
+                               :has-surface (Coated)
+                               :has-manufacturer (Aquarian))
+      evans-eq4-frosted (Drumhead
+                          "EQ4_Frosted"
+                          :has-plies 1
+                          :has-thickness 10
+                          :has-surface (Frosted)
+                          :has-dampening [(Ring)]
+                          :has-manufacturer (Evans)))
+
+;; Create some cymbal instances
+(setv meinl-byzance-dark-ride (Cymbal
+                                "Byzance_Dark_Ride"
+                                :is-made-of (B20)
+                                :has-weight "Medium_Thin"
+                                :is-lathed [False]
+                                :has-manufacturer (Meinl))
+      wuhan-large-china (Cymbal
+                          "20_inch_China"
+                          :is-made-of (B20)
+                          :has-weight "Thin"
+                          :is-lathed [True]
+                          :has-manufacturer (Wuhan)))
+
+;; Generate inferences, including those for property values
+(with [onto]
+  (sync-reasoner :infer-property-values True))
+
+;; Try some test queries
+
+; What products does Wuhan manufacture?
+(. onto wuhan1 is-manufacturer-of)
+
+; What drum heads are thick heads?
+(ThickHead.instances)
+
+;; Save the ontology to a file
+(onto.save "test_ontologies/drums_cymbals.owl")
 
