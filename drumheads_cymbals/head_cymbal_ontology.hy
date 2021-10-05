@@ -259,7 +259,7 @@
 (. onto wuhan1 is-manufacturer-of)
 
 ; What drum heads are thick heads?
-(ThickHead.instances)
+(list (ThickHead.instances))
 
 ;; Save the ontology to a file
 (onto.save "test_ontologies/drums_cymbals.owl")

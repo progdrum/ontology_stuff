@@ -97,8 +97,8 @@
 
 <owl:Class rdf:about="#StruckObject">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objects that are struck.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parent class of all struck objects.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objects that are struck.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -123,8 +123,8 @@
 
 <owl:Class rdf:about="#Clear">
   <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are a bit brighter and have more attack than coated heads.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are not so good for playing with brushes.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are a bit brighter and have more attack than coated heads.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -309,8 +309,8 @@
 
 <owl:Class rdf:about="#Alloy">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bronze or brass alloy from which a cymbal is made</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Different grades of brass and bronze yield different quality cymbals and gongs.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bronze or brass alloy from which a cymbal is made</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -329,8 +329,8 @@
 
 <owl:Class rdf:about="#B10">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B10 alloy (90% copper, 10% tin)</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate-grade cymbals, typically</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B10 alloy (90% copper, 10% tin)</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
