@@ -100,15 +100,6 @@
 
   (defentity "Manufacturer" "Thing"
     {:version-info ["0.1"]})
-  (defentity "Remo" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Evans" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Aquarian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Other" "Manufacturer"
-    {:version-info ["0.1"]})
-  (AllDisjoint [Remo Evans Aquarian Other])
 
   (defclass has-manufacturer [(>> StruckObject Manufacturer) FunctionalProperty])
   (defclass is-manufacturer-of [(>> Manufacturer StruckObject)]
@@ -175,29 +166,7 @@
   (defclass is-made-of [(>> Cymbal Alloy) FunctionalProperty])
   (defclass has-weight [(>> Cymbal str) FunctionalProperty])
   (defclass is-lathed [(>> Cymbal bool)])
-  (defclass has-hybrid-lathing [(>> Cymbal bool) FunctionalProperty])
-  
-  (defentity "Bosphorus" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Istanbul" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Dream" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Meinl" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Sabian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Zildjian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Paiste" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Wuhan" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Stagg" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Other" "Manufacturer"
-    {:version-info ["0.1"]})
-  (AllDisjoint [Bosphorus Istanbul Dream Meinl Sabian Zildjian Paiste Wuhan Stagg Other]))
+  (defclass has-hybrid-lathing [(>> Cymbal bool) FunctionalProperty]))
 
 ;; Add some other classes that combine classes and properties
 (with [onto]
@@ -213,54 +182,5 @@
                        (<= has-thickness 11))
      :version-info ["0.1"]}))
 
-
-;; Create some drum head instances
-(setv remo-emperor-clear (Drumhead
-                           "Emperor"
-                           :has-plies 2
-                           :has-thickness 14
-                           :has-surface (Clear)
-                           :has-manufacturer (Remo))
-      aquarian-triple-threat (Drumhead
-                               "Triple_Threat"
-                               :has-plies 3
-                               :has-thickness 21
-                               :has-surface (Coated)
-                               :has-manufacturer (Aquarian))
-      evans-eq4-frosted (Drumhead
-                          "EQ4_Frosted"
-                          :has-plies 1
-                          :has-thickness 10
-                          :has-surface (Frosted)
-                          :has-dampening [(Ring)]
-                          :has-manufacturer (Evans)))
-
-;; Create some cymbal instances
-(setv meinl-byzance-dark-ride (Cymbal
-                                "Byzance_Dark_Ride"
-                                :is-made-of (B20)
-                                :has-weight "Medium_Thin"
-                                :is-lathed [False]
-                                :has-manufacturer (Meinl))
-      wuhan-large-china (Cymbal
-                          "20_inch_China"
-                          :is-made-of (B20)
-                          :has-weight "Thin"
-                          :is-lathed [True]
-                          :has-manufacturer (Wuhan)))
-
-;; Generate inferences, including those for property values
-(with [onto]
-  (sync-reasoner :infer-property-values True))
-
-;; Try some test queries
-
-; What products does Wuhan manufacture?
-(. onto wuhan1 is-manufacturer-of)
-
-; What drum heads are thick heads?
-(list (ThickHead.instances))
-
-;; Save the ontology to a file
 (onto.save "test_ontologies/drums_cymbals.owl")
 
