@@ -1,13 +1,11 @@
 (import
   requests
-  bs4 [BeautifulSoup])
+  bs4 [BeautifulSoup]
+  multiprocessing.dummy [Pool :as ThreadPool])
 (require
   hyrule.let [let]
   hyrule.collections [assoc])
 
-
-(setv drumheads-p1 (requests.get "https://drumheadauthority.com/drumhead-selector")
-      bs (BeautifulSoup (. drumheads-p1 text) "html.parser"))
 
 (defn retrieve-names-urls [soup]
   "Retrieve the names of the drum heads for all the items on the page."
@@ -27,13 +25,8 @@
         (zip names urls)
         (list pair)))))
 
-(retrieve-names-urls bs)
-
-;; Retrieve the info table from a specific head's page.
-(setv hi-energy (requests.get "https://drumheadauthority.com/product/aquarian-hi-energy-clear-drumhead/")
-      bs2 (BeautifulSoup (. hi-energy text) "html.parser"))
-
 (defn retrieve-attributes [soup]
+  "Retrieve the drum head attributes from the attributes table."
   (let [attr-table (soup.find "table")
         tr-lst (attr-table.find-all "tr")]
     ; TODO: Add function to break up attributes with more than one value!
@@ -50,4 +43,24 @@
       (let [drumhead-soup (BeautifulSoup (. (requests.get v) text) "html.parser")]
         (assoc name-attrs k (retrieve-attributes drumhead-soup))))
     name-attrs))
+
+(defn process-page [url]
+  "Process a web page, retrieving all the drum head information."
+  (let [page (requests.get url)
+        bs (BeautifulSoup (. page text) "html.parser")]
+    (get-name-attr-pairs drumhead)))
+
+(if (= --name-- "__main__")
+    (setv pages
+          ["https://drumheadauthority.com/drumhead-selector"
+           "https://drumheadauthority.com/drumhead-selector/page/2/"
+           "https://drumheadauthority.com/drumhead-selector/page/3/"
+           "https://drumheadauthority.com/drumhead-selector/page/4/"
+           "https://drumheadauthority.com/drumhead-selector/page/5/"
+           "https://drumheadauthority.com/drumhead-selector/page/6/"])
+
+    ;; Process each of the pages in parallel, using as many workers
+    ;; as there are pages to process.
+    (with [pool (ThreadPool (len pages))]
+      (pool.map process-page pages)))
 
