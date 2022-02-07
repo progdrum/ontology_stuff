@@ -97,8 +97,8 @@
 
 <owl:Class rdf:about="#StruckObject">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parent class of all struck objects.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objects that are struck.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parent class of all struck objects.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -116,15 +116,15 @@
 
 <owl:Class rdf:about="#Coated">
   <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coated surfaces are good for brush players.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coated surfaces give a bit warmer tone.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coated surfaces are good for brush players.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Clear">
   <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are not so good for playing with brushes.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are a bit brighter and have more attack than coated heads.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are not so good for playing with brushes.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -162,8 +162,8 @@
 
 <owl:Class rdf:about="#Dampening">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Too much dampening can deaden the sound of the drum.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dampening mechanisms help to reduce unwanted overtones.</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Too much dampening can deaden the sound of the drum.</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -211,26 +211,6 @@
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
-<owl:Class rdf:about="#Remo">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Evans">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Aquarian">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Other">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
 <owl:Class rdf:about="#Cymbal">
   <rdfs:subClassOf rdf:resource="#StruckObject"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic cymbal class</rdfs:comment>
@@ -258,8 +238,6 @@
 
 <owl:Class rdf:about="#CrashRide">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
-  <rdfs:subClassOf rdf:resource="#Ride"/>
-  <rdfs:subClassOf rdf:resource="#Crash"/>
   <owl:equivalentClass>
     <owl:Class>
       <owl:intersectionOf rdf:parseType="Collection">
@@ -307,6 +285,11 @@
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
+<owl:Class rdf:about="#ChauGong">
+  <rdfs:subClassOf rdf:resource="#TamTam"/>
+  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1.1</owl:versionInfo>
+</owl:Class>
+
 <owl:Class rdf:about="#Alloy">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Different grades of brass and bronze yield different quality cymbals and gongs.</rdfs:comment>
@@ -322,8 +305,8 @@
 
 <owl:Class rdf:about="#B8">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commonly used for beginner/intermediate-level cymbals</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B8 alloy (92% copper, 8% tin)</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commonly used for beginner/intermediate-level cymbals</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -336,53 +319,8 @@
 
 <owl:Class rdf:about="#B20">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Usually top-of-the-line cymbals</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B20 alloy (80% copper, 20% tin)</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Bosphorus">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Istanbul">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Dream">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Meinl">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Sabian">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Zildjian">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Paiste">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Wuhan">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Stagg">
-  <rdfs:subClassOf rdf:resource="#Manufacturer"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Usually top-of-the-line cymbals</rdfs:comment>
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
@@ -443,108 +381,6 @@
   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
-<Clear rdf:about="#clear1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Clear>
-
-<Remo rdf:about="#remo1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Remo>
-
-<Drumhead rdf:about="#Emperor">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#ThickHead"/>
-  <has_surface rdf:resource="#clear1"/>
-  <has_manufacturer rdf:resource="#remo1"/>
-  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</has_plies>
-  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</has_thickness>
-</Drumhead>
-
-<Coated rdf:about="#coated1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Coated>
-
-<Aquarian rdf:about="#aquarian1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Aquarian>
-
-<Drumhead rdf:about="#Triple_Threat">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#ThickHead"/>
-  <has_surface rdf:resource="#coated1"/>
-  <has_manufacturer rdf:resource="#aquarian1"/>
-  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</has_plies>
-  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</has_thickness>
-</Drumhead>
-
-<Frosted rdf:about="#frosted1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Frosted>
-
-<Ring rdf:about="#ring1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Ring>
-
-<Evans rdf:about="#evans1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Evans>
-
-<Drumhead rdf:about="#EQ4_Frosted">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <has_surface rdf:resource="#frosted1"/>
-  <has_dampening rdf:resource="#ring1"/>
-  <has_manufacturer rdf:resource="#evans1"/>
-  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</has_plies>
-  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</has_thickness>
-</Drumhead>
-
-<B20 rdf:about="#b201">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</B20>
-
-<Meinl rdf:about="#meinl1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Meinl>
-
-<Cymbal rdf:about="#Byzance_Dark_Ride">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <has_manufacturer rdf:resource="#meinl1"/>
-  <is_made_of rdf:resource="#b201"/>
-  <has_weight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium_Thin</has_weight>
-  <is_lathed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</is_lathed>
-</Cymbal>
-
-<B20 rdf:about="#b202">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</B20>
-
-<Wuhan rdf:about="#wuhan1">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Wuhan>
-
-<Cymbal rdf:about="#20_inch_China">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <has_manufacturer rdf:resource="#wuhan1"/>
-  <is_made_of rdf:resource="#b202"/>
-  <has_weight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thin</has_weight>
-  <is_lathed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</is_lathed>
-</Cymbal>
-
-<owl:AllDisjointClasses>
-  <owl:members rdf:parseType="Collection">
-    <rdf:Description rdf:about="#Bosphorus"/>
-    <rdf:Description rdf:about="#Istanbul"/>
-    <rdf:Description rdf:about="#Dream"/>
-    <rdf:Description rdf:about="#Meinl"/>
-    <rdf:Description rdf:about="#Sabian"/>
-    <rdf:Description rdf:about="#Zildjian"/>
-    <rdf:Description rdf:about="#Paiste"/>
-    <rdf:Description rdf:about="#Wuhan"/>
-    <rdf:Description rdf:about="#Stagg"/>
-    <rdf:Description rdf:about="#Other"/>
-  </owl:members>
-</owl:AllDisjointClasses>
-
 <owl:AllDisjointClasses>
   <owl:members rdf:parseType="Collection">
     <rdf:Description rdf:about="#Brass"/>
@@ -569,15 +405,6 @@
     <rdf:Description rdf:about="#HiHat"/>
     <rdf:Description rdf:about="#China"/>
     <rdf:Description rdf:about="#Gong"/>
-  </owl:members>
-</owl:AllDisjointClasses>
-
-<owl:AllDisjointClasses>
-  <owl:members rdf:parseType="Collection">
-    <rdf:Description rdf:about="#Remo"/>
-    <rdf:Description rdf:about="#Evans"/>
-    <rdf:Description rdf:about="#Aquarian"/>
-    <rdf:Description rdf:about="#Other"/>
   </owl:members>
 </owl:AllDisjointClasses>
 

@@ -139,6 +139,8 @@
     {:version-info ["0.1"]})
   (defentity "NippleGong" "Gong"
     {:version-info ["0.1"]})
+  (defentity "ChauGong" "TamTam"
+    {:version-info ["0.1.1"]})
   (AllDisjoint [Crash HiHat China Gong])
   (AllDisjoint [Ride HiHat China Gong])
 
@@ -172,9 +174,10 @@
 (with [onto]
 
   (defentity "ThickHead" "Drumhead"
-    {:equivalent-to [(& Drumhead (|
-                                   (>= has-thickness 12)
-                                   (>= has-plies 2)))]
+    {:equivalent-to [(& Drumhead
+                        (|
+                          (>= has-thickness 12)
+                          (>= has-plies 2)))]
      :version-info ["0.1"]})
 
   (defentity "ThinHead" "Drumhead"

@@ -48,7 +48,7 @@
   "Process a web page, retrieving all the drum head information."
   (let [page (requests.get url)
         bs (BeautifulSoup (. page text) "html.parser")]
-    (get-name-attr-pairs drumhead)))
+    (get-name-attr-pairs (retrieve-names-urls bs))))
 
 (if (= --name-- "__main__")
     (setv pages
