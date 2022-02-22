@@ -41,7 +41,9 @@
   (let [name-attrs {}]
     (for [(, k v) (url-nm.items)]
       (let [drumhead-soup (BeautifulSoup (. (requests.get v) text) "html.parser")]
-        (assoc name-attrs k (retrieve-attributes drumhead-soup))))
+        ; Skip items that aren't drum heads (they'll have "Other Stuff" more than twice)
+        (if (= (len (drumhead-soup.find-all :string "Other Stuff")) 2)
+            (assoc name-attrs k (retrieve-attributes drumhead-soup)))))
     name-attrs))
 
 (defn process-page [url]
@@ -50,17 +52,18 @@
         bs (BeautifulSoup (. page text) "html.parser")]
     (get-name-attr-pairs (retrieve-names-urls bs))))
 
-(if (= --name-- "__main__")
-    (setv pages
-          ["https://drumheadauthority.com/drumhead-selector"
-           "https://drumheadauthority.com/drumhead-selector/page/2/"
-           "https://drumheadauthority.com/drumhead-selector/page/3/"
-           "https://drumheadauthority.com/drumhead-selector/page/4/"
-           "https://drumheadauthority.com/drumhead-selector/page/5/"
-           "https://drumheadauthority.com/drumhead-selector/page/6/"])
+(defn parse-data []
+  "Parse the drum head data from the web pages"
+  (let [pages
+        ["https://drumheadauthority.com/drumhead-selector"
+         "https://drumheadauthority.com/drumhead-selector/page/2/"
+         "https://drumheadauthority.com/drumhead-selector/page/3/"
+         "https://drumheadauthority.com/drumhead-selector/page/4/"
+         "https://drumheadauthority.com/drumhead-selector/page/5/"
+         "https://drumheadauthority.com/drumhead-selector/page/6/"]]
 
-    ;; Process each of the pages in parallel, using as many workers
-    ;; as there are pages to process.
+    ; Process each of the pages in parallel, using as many workers
+    ; as there are pages to process.
     (with [pool (ThreadPool (len pages))]
-      (pool.map process-page pages)))
+      (pool.map process-page pages))))
 
