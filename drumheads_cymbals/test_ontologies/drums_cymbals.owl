@@ -9,14 +9,12 @@
 <owl:Ontology rdf:about="https://progdrum.github.io/drumheads_cymbals.owl"/>
 
 <owl:ObjectProperty rdf:about="#has_surface">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#Drumhead"/>
   <rdfs:range rdf:resource="#Surface"/>
   <owl:inverseOf rdf:resource="#is_surface_of"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#is_surface_of">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
   <rdfs:domain rdf:resource="#Surface"/>
   <rdfs:range rdf:resource="#Drumhead"/>
   <owl:inverseOf rdf:resource="#has_surface"/>
@@ -29,7 +27,6 @@
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#is_dampening_for">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
   <rdfs:domain rdf:resource="#Dampening"/>
   <rdfs:range rdf:resource="#Drumhead"/>
   <owl:inverseOf rdf:resource="#has_dampening"/>
@@ -52,6 +49,95 @@
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#Cymbal"/>
   <rdfs:range rdf:resource="#Alloy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_lathing">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Cymbal"/>
+  <rdfs:range rdf:resource="#Lathing"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#goes_on">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Drum"/>
+  <owl:inverseOf rdf:resource="#takes_head"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#takes_head">
+  <rdfs:domain rdf:resource="#Drum"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#goes_on"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_durability">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Durability"/>
+  <owl:inverseOf rdf:resource="#heads_with_durability"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_durability">
+  <rdfs:domain rdf:resource="#Durability"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#has_durability"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_attack">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Attack"/>
+  <owl:inverseOf rdf:resource="#heads_with_attack"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_attack">
+  <rdfs:domain rdf:resource="#Attack"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#has_attack"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_overtones">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Overtones"/>
+  <owl:inverseOf rdf:resource="#heads_with_overtones"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_overtones">
+  <rdfs:domain rdf:resource="#Overtones"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#has_overtones"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_responsiveness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Responsiveness"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_responsiveness">
+  <rdfs:domain rdf:resource="#Responsiveness"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_sound">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Sound"/>
+  <owl:inverseOf rdf:resource="#heads_with_sound"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_sound">
+  <rdfs:domain rdf:resource="#Sound"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#has_sound"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_sustain">
+  <rdfs:domain rdf:resource="#Drumhead"/>
+  <rdfs:range rdf:resource="#Sustain"/>
+  <owl:inverseOf rdf:resource="#heads_with_sustain"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heads_with_sustain">
+  <rdfs:domain rdf:resource="#Sustain"/>
+  <rdfs:range rdf:resource="#Drumhead"/>
+  <owl:inverseOf rdf:resource="#has_sustain"/>
 </owl:ObjectProperty>
 
 <owl:DatatypeProperty rdf:about="#is_snare_side">
@@ -89,151 +175,56 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
 </owl:DatatypeProperty>
 
-<owl:DatatypeProperty rdf:about="#has_hybrid_lathing">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Cymbal"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-</owl:DatatypeProperty>
-
 <owl:Class rdf:about="#StruckObject">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objects that are struck.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parent class of all struck objects.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Drumhead">
   <rdfs:subClassOf rdf:resource="#StruckObject"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic drumhead class</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Surface">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drum heads can have a variety of surfaces that affect the feel, attack, and tone.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Coated">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coated surfaces give a bit warmer tone.</rdfs:comment>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coated surfaces are good for brush players.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Clear">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are a bit brighter and have more attack than coated heads.</rdfs:comment>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clear heads are not so good for playing with brushes.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Suede">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Ebony">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#SimulatedSkin">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These heads attempt to replicate the appearance, feel, and tone of skin drum heads of old.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Frosted">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Hazy">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These drum heads have a hazy coating and lie between clear and coated heads sonically.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Etched">
-  <rdfs:subClassOf rdf:resource="#Surface"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Dampening">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dampening mechanisms help to reduce unwanted overtones.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Too much dampening can deaden the sound of the drum.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#InlayRing">
-  <rdfs:subClassOf rdf:resource="#Dampening"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are plastic rings, usually underneath the head.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Dot">
   <rdfs:subClassOf rdf:resource="#Dampening"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An additional ply in the middle of the head that is smaller in diameter than the head.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#CenterDot">
-  <rdfs:subClassOf rdf:resource="#Dot"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#ReverseDot">
-  <rdfs:subClassOf rdf:resource="#Dot"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Holes">
-  <rdfs:subClassOf rdf:resource="#Dampening"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Holes allow additional air to escape upon striking.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Ring">
-  <rdfs:subClassOf rdf:resource="#Dampening"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
-</owl:Class>
-
-<owl:Class rdf:about="#Oil">
-  <rdfs:subClassOf rdf:resource="#Dampening"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Requires at least two plies.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Manufacturer">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Cymbal">
   <rdfs:subClassOf rdf:resource="#StruckObject"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generic cymbal class</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Crash">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">May also be rideable</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Ride">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">May also be crashable.</rdfs:comment>
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Crash</rdfs:seeAlso>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#FlatRide">
   <rdfs:subClassOf rdf:resource="#Ride"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ride cymbals without a pronounced bell</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#CrashRide">
@@ -251,77 +242,129 @@
 
 <owl:Class rdf:about="#Splash">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#HiHat">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#China">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Efx">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Miscellaneous effects cymbals</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Gong">
   <rdfs:subClassOf rdf:resource="#Cymbal"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#TamTam">
   <rdfs:subClassOf rdf:resource="#Gong"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#NippleGong">
   <rdfs:subClassOf rdf:resource="#Gong"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#ChauGong">
   <rdfs:subClassOf rdf:resource="#TamTam"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#Alloy">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Different grades of brass and bronze yield different quality cymbals and gongs.</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bronze or brass alloy from which a cymbal is made</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Different grades of brass and bronze yield different quality cymbals and gongs.</rdfs:comment>
 </owl:Class>
 
 <owl:Class rdf:about="#Brass">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Typically cheap cymbals that come with beginner drum kits.</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#B8">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B8 alloy (92% copper, 8% tin)</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commonly used for beginner/intermediate-level cymbals</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#B10">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate-grade cymbals, typically</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B10 alloy (90% copper, 10% tin)</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#B20">
   <rdfs:subClassOf rdf:resource="#Alloy"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B20 alloy (80% copper, 20% tin)</rdfs:comment>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Usually top-of-the-line cymbals</rdfs:comment>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B20 alloy (80% copper, 20% tin)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Lathing">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FullyLathed">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Unlathed">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hybrid">
+  <rdfs:subClassOf rdf:resource="#Lathing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Drum">
+  <rdfs:subClassOf rdf:resource="#StruckObject"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A membranophone that is struck to produce music</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#SnareDrum">
+  <rdfs:subClassOf rdf:resource="#Drum"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A drum with wires on the bottom head to produce a snap, crackle, and pop!</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#BassDrum">
+  <rdfs:subClassOf rdf:resource="#Drum"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A large, low-pitched drum</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TomTom">
+  <rdfs:subClassOf rdf:resource="#Drum"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drums without snares of varying sizes and pitches</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Bucket">
+  <rdfs:subClassOf rdf:resource="#Drum"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yeah, that's right. A bucket.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Durability">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Attack">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Overtones">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Responsiveness">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sound">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sustain">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
 
 <owl:Class rdf:about="#ThickHead">
@@ -373,13 +416,2536 @@
       </owl:intersectionOf>
     </owl:Class>
   </owl:equivalentClass>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
 </owl:Class>
 
 <owl:Class rdf:about="#ThinHead">
   <rdfs:subClassOf rdf:resource="#Drumhead"/>
-  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.1</owl:versionInfo>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drumhead"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_thickness"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</xsd:maxExclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
 </owl:Class>
+
+<Drumhead rdf:about="#Remo_Pinstripe_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Attack rdf:about="#ModerateAttack">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attack>
+
+<Attack rdf:about="#HighAttack">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attack>
+
+<Durability rdf:about="#MediumDurability">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Durability>
+
+<Durability rdf:about="#HighDurability">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Durability>
+
+<Overtones rdf:about="#LowOvertones">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Overtones>
+
+<Responsiveness rdf:about="#MediumResponsiveness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Responsiveness>
+
+<Sound rdf:about="#VeryWarm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sound>
+
+<Sound rdf:about="#Warm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sound>
+
+<Sustain rdf:about="#LowSustain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sustain>
+
+<SnareDrum rdf:about="#snare_drum">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</SnareDrum>
+
+<BassDrum rdf:about="#bass_drum">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</BassDrum>
+
+<TomTom rdf:about="#tom_tom">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</TomTom>
+
+<Surface rdf:about="#Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Dampening rdf:about="#ControlRing">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Fiberskyn_Ambassador">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</has_thickness>
+</Drumhead>
+
+<Overtones rdf:about="#ModerateOvertones">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Overtones>
+
+<Sustain rdf:about="#ModerateSustain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sustain>
+
+<Surface rdf:about="#SimulatedSkin">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Dampening rdf:about="#InlayRing">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Fiberskyn_Diplomat">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.5</has_thickness>
+</Drumhead>
+
+<Durability rdf:about="#LowDurability">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Durability>
+
+<Responsiveness rdf:about="#HighResponsiveness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Responsiveness>
+
+<Sound rdf:about="#Balanced">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sound>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Fiberskyn_Felt_Tone">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.5</has_thickness>
+</Drumhead>
+
+<Attack rdf:about="#LowAttack">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attack>
+
+<Drumhead rdf:about="#Evans_G14_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Hybrid">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#ExtremeDurability"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">666.0</has_thickness>
+</Drumhead>
+
+<Durability rdf:about="#VeryHighDurability">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Durability>
+
+<Durability rdf:about="#ExtremeDurability">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Durability>
+
+<Drumhead rdf:about="#Evans_G12_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Overtones rdf:about="#HighOvertones">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Overtones>
+
+<Sustain rdf:about="#HighSustain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sustain>
+
+<Drumhead rdf:about="#Remo_Emperor_Vintage_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</has_thickness>
+</Drumhead>
+
+<Surface rdf:about="#Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Drumhead rdf:about="#Remo_Emperor_Vintage_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G12_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Sound rdf:about="#Bright">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sound>
+
+<Drumhead rdf:about="#Aquarian_Classic_Clear_Snare_Bottom_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Hi-Performance_Snare_Bottom_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_200_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_thickness>
+</Drumhead>
+
+<Responsiveness rdf:about="#VeryHighResponsiveness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Responsiveness>
+
+<Drumhead rdf:about="#Evans_300_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_500_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</has_thickness>
+</Drumhead>
+
+<Responsiveness rdf:about="#LowResponsiveness">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Responsiveness>
+
+<Drumhead rdf:about="#Remo_Ambassador_Black_Suede_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Suede"/>
+  <has_surface rdf:resource="#Etched"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</has_thickness>
+</Drumhead>
+
+<Surface rdf:about="#Etched">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Surface rdf:about="#Suede">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Drumhead rdf:about="#Remo_Ambassador_Clear_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Hazy_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Hazy"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Surface rdf:about="#Hazy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Drumhead rdf:about="#Remo_Ambassador_Renaissance_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_thickness>
+</Drumhead>
+
+<Surface rdf:about="#Frosted">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Surface>
+
+<Drumhead rdf:about="#Remo_Diplomat_Hazy_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Hazy"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Calftone_Bass_Drum">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EC1_Reverse_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Dampening rdf:about="#ReverseDot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Evans_EMAD_Calftone">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Overtones rdf:about="#VeryLowOvertones">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Overtones>
+
+<Sustain rdf:about="#VeryLowSustain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sustain>
+
+<Dampening rdf:about="#RemovableDampening">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Evans_EQ3_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EQ3_Frosted">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G14_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Genera_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Heavyweight_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Hydraulic">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#Oil"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Dampening rdf:about="#Oil">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Evans_Orchestral_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Power_Center_Reverse_Dot_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Vintage">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Controlled_Sound_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Dampening rdf:about="#CenterDot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Remo_Controlled_Sound_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Diplomat_M5_Thin_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#VeryBright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</has_thickness>
+</Drumhead>
+
+<Sound rdf:about="#VeryBright">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sound>
+
+<Drumhead rdf:about="#Remo_Emperor_Hazy_Snare_Side_Resonant">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Hazy"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Pinstripe_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Deep_Vintage_II">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EC_Reverse_Dot_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">17.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EQ4_Calftone">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Power_Center_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Power_Center_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Fiberskyn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Diplomat_Fiberskyn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.5</has_thickness>
+</Drumhead>
+
+<Sustain rdf:about="#VeryHighSustain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Sustain>
+
+<Drumhead rdf:about="#Aquarian_Hi-Impact_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Hi-Velocity_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_II">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_II_with_Felt_Strip">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_II_with_Super-Kick_Ring">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_Medium">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_Thin">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Modern_Vintage_with_Felt_Strip">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Performance_2_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Performance_2_Clear_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Performance_2_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Response_2_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Response_2_Clear_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Response_2_Texture_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Studio-X_Texture_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Studio-X_Texture_Coated_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super_2_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super_2_Clear_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super_2_Clear_with_Studio-X_Ring">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super_2_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super-Kick_10_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super-Kick_10_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super-Kick_I_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Calftone">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Emperor_X_Black_Suede">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Suede"/>
+  <has_surface rdf:resource="#Etched"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Emperor_X_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powersonic_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powersonic_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P3_Suede">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Suede"/>
+  <has_surface rdf:resource="#Etched"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P4_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_P4_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_Pro_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Powerstroke_Pro_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Impact_I_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Impact_II_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Impact_III_Coated_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Studio-X_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Concert_5_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#VeryBright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Deep_Vintage_II_with_Felt_Strip">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Deep_Vintage_II_with_Super-Kick_Ring">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_surface rdf:resource="#SimulatedSkin"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Focus-X_Coated_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Force_Ten_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Force_Ten_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Hi-Frequency_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#VeryBright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Hi-Frequency_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G2_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G2_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_Genera_Dry_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#Holes"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Dampening rdf:about="#Holes">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Dampening>
+
+<Drumhead rdf:about="#Evans_GMAD_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_HD_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_HD_Dry_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#Holes"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_J1_Etched">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Etched"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_ST_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_ST_Dry_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#Holes"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_UV1_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_UV2_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_Suede">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Suede"/>
+  <has_surface rdf:resource="#Etched"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_X_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Ambassador_X14_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Controlled_Sound_X_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Diplomat_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#VeryBright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Diplomat_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#VeryHighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Emperor_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Emperor_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Remo_Emperor_Suede">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Suede"/>
+  <has_surface rdf:resource="#Etched"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.5</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Classic_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Classic_Clear_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Focus-X_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Focus-X_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Force_I_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Force_I_Texture_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Hi-Energy_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_New_Orleans_Special_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Studio-X_Clear_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#CenterDot"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Super-Kick_II_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Texture_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Texture_Coated_with_Power_Dot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ReverseDot"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Aquarian_Triple_Threat_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">21.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EC_Frosted">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">17.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EC2S_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EC2S_Frosted">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#HighDurability"/>
+  <has_durability rdf:resource="#MediumDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_responsiveness rdf:resource="#MediumResponsiveness"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#VeryWarm"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EMAD_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EMAD_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_sound rdf:resource="#Warm"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#ModerateSustain"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EMAD_Heavyweight_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EMAD2_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#ControlRing"/>
+  <has_dampening rdf:resource="#RemovableDampening"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#VeryHighDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#HighAttack"/>
+  <has_overtones rdf:resource="#LowOvertones"/>
+  <has_overtones rdf:resource="#VeryLowOvertones"/>
+  <has_responsiveness rdf:resource="#LowResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#VeryLowSustain"/>
+  <has_sustain rdf:resource="#LowSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">17.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EQ4_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_EQ4_Frosted">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Frosted"/>
+  <has_dampening rdf:resource="#InlayRing"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#ModerateOvertones"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G1_Clear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Clear"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<Drumhead rdf:about="#Evans_G1_Coated">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_surface rdf:resource="#Coated"/>
+  <goes_on rdf:resource="#snare_drum"/>
+  <goes_on rdf:resource="#bass_drum"/>
+  <goes_on rdf:resource="#tom_tom"/>
+  <has_durability rdf:resource="#LowDurability"/>
+  <has_attack rdf:resource="#ModerateAttack"/>
+  <has_attack rdf:resource="#LowAttack"/>
+  <has_overtones rdf:resource="#HighOvertones"/>
+  <has_responsiveness rdf:resource="#HighResponsiveness"/>
+  <has_sound rdf:resource="#Bright"/>
+  <has_sound rdf:resource="#Balanced"/>
+  <has_sustain rdf:resource="#HighSustain"/>
+  <has_sustain rdf:resource="#VeryHighSustain"/>
+  <has_plies rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has_plies>
+  <has_thickness rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</has_thickness>
+</Drumhead>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#SnareDrum"/>
+    <rdf:Description rdf:about="#BassDrum"/>
+    <rdf:Description rdf:about="#TomTom"/>
+    <rdf:Description rdf:about="#Bucket"/>
+  </owl:members>
+</owl:AllDisjointClasses>
 
 <owl:AllDisjointClasses>
   <owl:members rdf:parseType="Collection">
@@ -405,19 +2971,6 @@
     <rdf:Description rdf:about="#HiHat"/>
     <rdf:Description rdf:about="#China"/>
     <rdf:Description rdf:about="#Gong"/>
-  </owl:members>
-</owl:AllDisjointClasses>
-
-<owl:AllDisjointClasses>
-  <owl:members rdf:parseType="Collection">
-    <rdf:Description rdf:about="#Coated"/>
-    <rdf:Description rdf:about="#Clear"/>
-    <rdf:Description rdf:about="#Suede"/>
-    <rdf:Description rdf:about="#Ebony"/>
-    <rdf:Description rdf:about="#SimulatedSkin"/>
-    <rdf:Description rdf:about="#Frosted"/>
-    <rdf:Description rdf:about="#Hazy"/>
-    <rdf:Description rdf:about="#Etched"/>
   </owl:members>
 </owl:AllDisjointClasses>
 
