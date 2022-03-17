@@ -1,4 +1,5 @@
 (import owlready2 *)
+(require hyrule.let [let])
 
 (setv onto (get-ontology "https://progdrum.github.io/drumheads_cymbals.owl#"))
 
@@ -9,6 +10,7 @@
       (except [KeyError]
         default)))
 
+;; TODO: Improve on this when unpack-mapping becomes available in macros.
 ;; Macro for defining entities with all options in one command
 (defmacro defentity [ent-name parent [attributes {}]]
   (import hy.models [Symbol])
@@ -28,87 +30,34 @@
 
   (defentity "StruckObject" "Thing"
     {:comments ["Objects that are struck."
-                "Parent class of all struck objects."]
-     :version-info ["0.1"]})
+                "Parent class of all struck objects."]})
 
   (defentity "Drumhead" "StruckObject"
-    {:comments ["Generic drumhead class"]
-     :version-info ["0.1"]})
+    {:comments ["Generic drumhead class"]})
 
   (defclass is-snare-side [(>> Drumhead bool) FunctionalProperty])
   (defclass has-plies [(>> Drumhead int) FunctionalProperty])
   (defclass has-thickness [(>> Drumhead float) FunctionalProperty])
 
   (defentity "Surface" "Thing"
-    {:comments ["Drum heads can have a variety of surfaces that affect the feel, attack, and tone."]
-     :version-info ["0.1"]})
-  (defentity "Coated" "Surface"
-    {:comments ["Coated surfaces are good for brush players."
-                "Coated surfaces give a bit warmer tone."]
-     :version-info ["0.1"]})
-  (defentity "Clear" "Surface"
-    {:comments ["Clear heads are a bit brighter and have more attack than coated heads."
-                "Clear heads are not so good for playing with brushes."]
-     :version-info ["0.1"]})
-  (defentity "Suede" "Surface"
-    {:version-info ["0.1"]})
-  (defentity "Ebony" "Surface"
-    {:version-info ["0.1"]})
-  (defentity "SimulatedSkin" "Surface"
-    {:comments ["These heads attempt to replicate the appearance, feel, and tone of skin drum heads of old."]
-     :version-info ["0.1"]})
-  (defentity "Frosted" "Surface"
-    {:version-info ["0.1"]})
-  (defentity "Hazy" "Surface"
-    {:comments ["These drum heads have a hazy coating and lie between clear and coated heads sonically."]
-     :version-info ["0.1"]})
-  (defentity "Etched" "Surface"
-    {:version-info ["0.1"]})
-  (AllDisjoint [Coated Clear Suede Ebony SimulatedSkin Frosted Hazy Etched])
+    {:comments ["Drum heads can have a variety of surfaces that affect the feel, attack, and tone."]})
 
-  (defclass has-surface [(>> Drumhead Surface) FunctionalProperty])
-  (defclass is-surface-of [(>> Surface Drumhead) InverseFunctionalProperty]
+  (defclass has-surface [(>> Drumhead Surface)])
+  (defclass is-surface-of [(>> Surface Drumhead)]
     (setv inverse-property has-surface))
   
   (defentity "Dampening" "Thing"
     {:comments ["Dampening mechanisms help to reduce unwanted overtones."
-                "Too much dampening can deaden the sound of the drum."]
-     :version-info ["0.1"]})
-  (defentity "InlayRing" "Dampening"
-    {:comments ["These are plastic rings, usually underneath the head."]
-     :version-info ["0.1"]})
+                "Too much dampening can deaden the sound of the drum."]})
   (defentity "Dot" "Dampening"
-    {:comments ["An additional ply in the middle of the head that is smaller in diameter than the head."]
-     :version-info ["0.1"]})
-  (defentity "CenterDot" "Dot"
-    {:version-info ["0.1"]})
-  (defentity "ReverseDot" "Dot"
-    {:version-info ["0.1"]})
-  (defentity "Holes" "Dampening"
-    {:comments ["Holes allow additional air to escape upon striking."]
-     :version-info ["0.1"]})
-  (defentity "Ring" "Dampening"
-    {:version-info ["0.1"]})
-  (defentity "Oil" "Dampening"
-    {:comments ["Requires at least two plies."]
-     :version-info ["0.1"]})
+    {:comments ["An additional ply in the middle of the head that is smaller in diameter than the head."]})
 
   (defclass has-dampening [(>> Drumhead Dampening)])
-  (defclass is-dampening-for [(>> Dampening Drumhead) InverseFunctionalProperty]
+  (defclass is-dampening-for [(>> Dampening Drumhead)]
     (setv inverse-property has-dampening))
   (defclass dot-thickness [(>> Dot float) FunctionalProperty])
 
-  (defentity "Manufacturer" "Thing"
-    {:version-info ["0.1"]})
-  (defentity "Remo" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Evans" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Aquarian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Other" "Manufacturer"
-    {:version-info ["0.1"]})
-  (AllDisjoint [Remo Evans Aquarian Other])
+  (defentity "Manufacturer" "Thing")
 
   (defclass has-manufacturer [(>> StruckObject Manufacturer) FunctionalProperty])
   (defclass is-manufacturer-of [(>> Manufacturer StruckObject)]
@@ -118,149 +67,321 @@
 (with [onto]
 
   (defentity "Cymbal" "StruckObject"
-    {:comments ["Generic cymbal class"]
-     :version-info ["0.1"]})
+    {:comments ["Generic cymbal class"]})
   (defentity "Crash" "Cymbal"
-    {:comments ["May also be rideable"]
-     :version-info ["0.1"]})
+    {:comments ["May also be rideable"]})
   (defentity "Ride" "Cymbal"
     {:comments ["May also be crashable."]
-     :see-also ["Crash"]
-     :version-info ["0.1"]})
+     :see-also ["Crash"]})
   (defentity "FlatRide" "Ride"
-    {:comments ["Ride cymbals without a pronounced bell"]
-     :version-info ["0.1"]})
+    {:comments ["Ride cymbals without a pronounced bell"]})
   (defentity "CrashRide" "Cymbal"
     {:equivalent-to [(& Crash Ride)]
      :comments ["A cymbal made for both crashing and riding"]})
-  (defentity "Splash" "Cymbal"
-    {:version-info ["0.1"]})
-  (defentity "HiHat" "Cymbal"
-    {:version-info ["0.1"]})
-  (defentity "China" "Cymbal"
-    {:version-info ["0.1"]})
+  (defentity "Splash" "Cymbal")
+  (defentity "HiHat" "Cymbal")
+  (defentity "China" "Cymbal")
   (defentity "Efx" "Cymbal"
-    {:comments ["Miscellaneous effects cymbals"]
-     :version-info ["0.1"]})
-  (defentity "Gong" "Cymbal"
-    {:version-info ["0.1"]})
-  (defentity "TamTam" "Gong"
-    {:version-info ["0.1"]})
-  (defentity "NippleGong" "Gong"
-    {:version-info ["0.1"]})
+    {:comments ["Miscellaneous effects cymbals"]})
+  (defentity "Gong" "Cymbal")
+  (defentity "TamTam" "Gong")
+  (defentity "NippleGong" "Gong")
+  (defentity "ChauGong" "TamTam")
   (AllDisjoint [Crash HiHat China Gong])
   (AllDisjoint [Ride HiHat China Gong])
 
   (defentity "Alloy" "Thing"
     {:comments ["Different grades of brass and bronze yield different quality cymbals and gongs."
-                "The bronze or brass alloy from which a cymbal is made"]
-     :version-info ["0.1"]})
+                "The bronze or brass alloy from which a cymbal is made"]})
   (defentity "Brass" "Alloy"
-    {:comments ["Typically cheap cymbals that come with beginner drum kits."]
-     :version-info ["0.1"]})
+    {:comments ["Typically cheap cymbals that come with beginner drum kits."]})
   (defentity "B8" "Alloy"
     {:comments ["Commonly used for beginner/intermediate-level cymbals"
-                "B8 alloy (92% copper, 8% tin)"]
-     :version-info ["0.1"]})
+                "B8 alloy (92% copper, 8% tin)"]})
   (defentity "B10" "Alloy"
     {:comments ["Intermediate-grade cymbals, typically"
-                "B10 alloy (90% copper, 10% tin)"]
-     :version-info ["0.1"]})
+                "B10 alloy (90% copper, 10% tin)"]})
   (defentity "B20" "Alloy"
     {:comments ["Usually top-of-the-line cymbals"
-                "B20 alloy (80% copper, 20% tin)"]
-     :version-info ["0.1"]})
+                "B20 alloy (80% copper, 20% tin)"]})
   (AllDisjoint [Brass B8 B10 B20])
 
+  (defentity "Lathing" "Thing")
+  (defentity "FullyLathed" "Lathing")
+  (defentity "Unlathed" "Lathing")
+  (defentity "Hybrid" "Lathing")
+  
   (defclass is-made-of [(>> Cymbal Alloy) FunctionalProperty])
   (defclass has-weight [(>> Cymbal str) FunctionalProperty])
   (defclass is-lathed [(>> Cymbal bool)])
-  (defclass has-hybrid-lathing [(>> Cymbal bool) FunctionalProperty])
+  (defclass has-lathing [(>> Cymbal Lathing) FunctionalProperty]))
+
+;;;; Add some other classes to take into account for our attributes
+
+(with [onto]
   
-  (defentity "Bosphorus" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Istanbul" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Dream" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Meinl" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Sabian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Zildjian" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Paiste" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Wuhan" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Stagg" "Manufacturer"
-    {:version-info ["0.1"]})
-  (defentity "Other" "Manufacturer"
-    {:version-info ["0.1"]})
-  (AllDisjoint [Bosphorus Istanbul Dream Meinl Sabian Zildjian Paiste Wuhan Stagg Other]))
+  ;; Drum types
+  (defentity "Drum" "StruckObject"
+    {:comments ["A membranophone that is struck to produce music"]})
+  (defentity "SnareDrum" "Drum"
+    {:comments ["A drum with wires on the bottom head to produce a snap, crackle, and pop!"]})
+  (defentity "BassDrum" "Drum"
+    {:comments ["A large, low-pitched drum"]})
+  (defentity "TomTom" "Drum"
+    {:comments ["Drums without snares of varying sizes and pitches"]})
+  (defentity "Bucket" "Drum"
+    {:comments ["Yeah, that's right. A bucket."]})
+  (AllDisjoint [SnareDrum BassDrum TomTom Bucket])
+
+  ;; What kinds of drums does the head go on? Will this work for getting me individuals later?
+  (defclass goes-on [(>> Drumhead Drum)])
+  (defclass takes-head [(>> Drum Drumhead)]
+    (setv inverse-property goes-on))
+
+  ;; Durability
+  (defentity "Durability" "Thing")
+
+  (defclass has-durability [(>> Drumhead Durability)])
+  (defclass heads-with-durability [(>> Durability Drumhead)]
+    (setv inverse-property has-durability))
+
+  ;; Attack
+  (defentity "Attack" "Thing")
+
+  (defclass has-attack [(>> Drumhead Attack)])
+  (defclass heads-with-attack [(>> Attack Drumhead)]
+    (setv inverse-property has-attack))
+
+  ;; Overtones
+  (defentity "Overtones" "Thing")
+
+  (defclass has-overtones [(>> Drumhead Overtones)])
+  (defclass heads-with-overtones [(>> Overtones Drumhead)]
+    (setv inverse-property has-overtones))
+
+  ;; Responsiveness
+  (defentity "Responsiveness" "Thing")
+
+  (defclass has-responsiveness [(>> Drumhead Responsiveness) FunctionalProperty])
+  (defclass heads-with-responsiveness [(>> Responsiveness Drumhead)]
+    (setv inverse-functional-property has-responsiveness))  ; TODO: Figure this bitch out!
+
+  ;; Sound
+  (defentity "Sound" "Thing")
+
+  (defclass has-sound [(>> Drumhead Sound)])
+  (defclass heads-with-sound [(>> Sound Drumhead)]
+    (setv inverse-property has-sound))
+
+  ;; Sustain
+  (defentity "Sustain" "Thing")
+
+  (defclass has-sustain [(>> Drumhead Sustain)])
+  (defclass heads-with-sustain [(>> Sustain Drumhead)]
+    (setv inverse-property has-sustain)))
 
 ;; Add some other classes that combine classes and properties
 (with [onto]
 
   (defentity "ThickHead" "Drumhead"
-    {:equivalent-to [(& Drumhead (|
-                                   (>= has-thickness 12)
-                                   (>= has-plies 2)))]
-     :version-info ["0.1"]})
+    {:equivalent-to [(& Drumhead
+                        (|
+                          (>= has-thickness 12)
+                          (>= has-plies 2)))]})
 
   (defentity "ThinHead" "Drumhead"
-    {:equivalent-to (& Drumhead
-                       (<= has-thickness 11))
-     :version-info ["0.1"]}))
+    {:equivalent-to [(& Drumhead
+                         (< has-thickness 12))]}))
 
+;;;; Add instances to the ontology, beginning here!
 
-;; Create some drum head instances
-(setv remo-emperor-clear (Drumhead
-                           "Emperor"
-                           :has-plies 2
-                           :has-thickness 14
-                           :has-surface (Clear)
-                           :has-manufacturer (Remo))
-      aquarian-triple-threat (Drumhead
-                               "Triple_Threat"
-                               :has-plies 3
-                               :has-thickness 21
-                               :has-surface (Coated)
-                               :has-manufacturer (Aquarian))
-      evans-eq4-frosted (Drumhead
-                          "EQ4_Frosted"
-                          :has-plies 1
-                          :has-thickness 10
-                          :has-surface (Frosted)
-                          :has-dampening [(Ring)]
-                          :has-manufacturer (Evans)))
+;; Gather the dict for each page into one large dict
+(import re
+        json
+        parse-page
+        collections [ChainMap])
+;; (setv drumheads (parse-page.parse-data))
+;; (setv all-heads (ChainMap #*drumheads))
 
-;; Create some cymbal instances
-(setv meinl-byzance-dark-ride (Cymbal
-                                "Byzance_Dark_Ride"
-                                :is-made-of (B20)
-                                :has-weight "Medium_Thin"
-                                :is-lathed [False]
-                                :has-manufacturer (Meinl))
-      wuhan-large-china (Cymbal
-                          "20_inch_China"
-                          :is-made-of (B20)
-                          :has-weight "Thin"
-                          :is-lathed [True]
-                          :has-manufacturer (Wuhan)))
+;; (with [f (open "drumhead_info.json" "w")]
+;;   (f.write (json.dumps (dict all-heads))))
 
-;; Generate inferences, including those for property values
+(with [data (open "drumhead_info.json" "r")]
+  (setv all-heads (json.load data)))
+
+(defn extract-number [val]
+  "Given an alphanumeric value, retrieve just the number"
+  (let [num-val (if (in "," val)
+                    (get (.split val ",") 0)
+                    val)]
+    (if (not (in "." num-val))
+        (float (get (re.findall r"(\d+)" num-val) 0))
+        (float (get (re.findall r"(\d+\.\d)" num-val) 0)))))
+
+;; Create instances from the attributes!
 (with [onto]
-  (sync-reasoner :infer-property-values True))
+  
+  ; Log failures to a file for further reference
+  (with [f (open "errors.txt" "w")]
+    (for [(, k v) (all-heads.items)]
 
-;; Try some test queries
+      ; Create/Name instance
+      (setv drum-head (Drumhead (k.replace " " "_")))
 
-; What products does Wuhan manufacture?
-(. onto wuhan1 is-manufacturer-of)
+      ; Attack
+      (try
+        (let [attack-lst []]
+          (for [attack-val (.split (get v "Attack") ", ")]
+            (cond [(= attack-val "Very Low") (attack-lst.append (Attack "VeryLowAttack"))]
+                  [(= attack-val "Low") (attack-lst.append (Attack "LowAttack"))]
+                  [(= attack-val "Moderate") (attack-lst.append (Attack "ModerateAttack"))]
+                  [(= attack-val "High") (attack-lst.append (Attack "HighAttack"))]
+                  [(= attack-val "Very High") (attack-lst.append (Attack "VeryHighAttack"))]))
+          (setv (. drum-head has-attack) attack-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Attack' key.\n")))
 
-; What drum heads are thick heads?
-(list (ThickHead.instances))
+      ; Durability
+      (try
+        (let [dur-lst []]
+          (for [dur-val (.split (get v "Durability") ", ")]
+            (cond [(= dur-val "Very Low") (dur-lst.append (Durability "VeryLowDurability"))]
+                  [(= dur-val "Low") (dur-lst.append (Durability "LowDurability"))]
+                  [(= dur-val "Medium") (dur-lst.append (Durability "MediumDurability"))]
+                  [(= dur-val "High") (dur-lst.append (Durability "HighDurability"))]
+                  [(= dur-val "Very High") (dur-lst.append (Durability "VeryHighDurability"))]
+                  [(= dur-val "Extreme") (dur-lst.append (Durability "ExtremeDurability"))]))
+          (setv (. drum-head has-durability) dur-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Durability' key.\n")))
 
-;; Save the ontology to a file
+      ; Overtones
+      (try
+        (let [ot-lst []]
+          (for [ot-val (.split (get v "Overtones") ", ")]
+            (cond [(= ot-val "Very Low") (ot-lst.append (Overtones "VeryLowOvertones"))]
+                  [(= ot-val "Low") (ot-lst.append (Overtones "LowOvertones"))]
+                  [(= ot-val "Moderate") (ot-lst.append (Overtones "ModerateOvertones"))]
+                  [(= ot-val "High") (ot-lst.append (Overtones "HighOvertones"))]
+                  [(= ot-val "Very High") (ot-lst.append (Overtones "VeryHighOvertones"))]))
+          (setv (. drum-head has-overtones) ot-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Overtones' key.\n")))
+
+      ; Responsiveness
+      (try
+        (let [resp-val (get v "Responsiveness")]
+          (cond [(= resp-val "Very Low")
+                 (setv (. drum-head has-responsiveness)
+                       (Responsiveness "VeryLowResponsiveness"))]
+                [(= resp-val "Low")
+                 (setv (. drum-head has-responsiveness) (Responsiveness "LowResponsiveness"))]
+                [(= resp-val "Medium")
+                 (setv (. drum-head has-responsiveness) (Responsiveness "MediumResponsiveness"))]
+                [(= resp-val "High")
+                 (setv (. drum-head has-responsiveness) (Responsiveness "HighResponsiveness"))]
+                [(= resp-val "Very High")
+                 (setv (. drum-head has-responsiveness)
+                       (Responsiveness "VeryHighResponsiveness"))]))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Responsiveness' key.\n")))
+
+      ; Sound
+      (try
+        (let [sound-lst []]
+          (for [sound-val (.split (get v "Sound") ", ")]
+            (cond [(= sound-val "Very Warm") (sound-lst.append (Sound "VeryWarm"))]
+                  [(= sound-val "Warm") (sound-lst.append (Sound "Warm"))]
+                  [(= sound-val "Balanced") (sound-lst.append (Sound "Balanced"))]
+                  [(= sound-val "Bright") (sound-lst.append (Sound "Bright"))]
+                  [(= sound-val "Very Bright") (sound-lst.append (Sound "VeryBright"))]))
+          (setv (. drum-head has-sound) sound-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Sound' key.\n")))
+
+      ; Sustain
+      (try
+        (let [sustain-lst []]
+          (for [sustain-val (.split (get v "Sustain") ", ")]
+            (cond [(= sustain-val "Very Low") (sustain-lst.append (Sustain "VeryLowSustain"))]
+                  [(= sustain-val "Low") (sustain-lst.append (Sustain "LowSustain"))]
+                  [(= sustain-val "Moderate") (sustain-lst.append (Sustain "ModerateSustain"))]
+                  [(= sustain-val "High") (sustain-lst.append (Sustain "HighSustain"))]
+                  [(= sustain-val "Very High") (sustain-lst.append
+                                                 (Sustain "VeryHighSustain"))]))
+          (setv (. drum-head has-sustain) sustain-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Sustain' key.\n")))
+
+      ; Drum(s)
+      (try
+        (let [drum-lst []]
+          (print f"DRUMHEAD: {k}")
+          (for [drum-val (.split (get v "Drum") ", ")]
+            (print f"DRUM: {drum-val}")
+            (cond [(= drum-val "Snare Drum")
+                   (.append (. drum-head goes-on) (SnareDrum "snare_drum"))]
+                  [(= drum-val "Snare Side Resonant")
+                   (.append (. drum-head goes-on) (SnareDrum "snare_drum"))]
+                  [(= drum-val "Bass Drum")
+                   (.append (. drum-head goes-on) (BassDrum "bass_drum"))]
+                  [(= drum-val "Toms") (.append (. drum-head goes-on) (TomTom "tom_tom"))]
+                  [(= drum-val "Bucket") (.append (. drum-head goes-on) (Bucket "bucket"))]))
+                                ;          (setv (. drum-head goes-on) drum-lst)
+;          (for [d drum-lst] (.append (. drum-head goes-on) d))
+          (print f"GOES ON: {(. drum-head goes-on)}"))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Drum' key.")))
+
+      ; Ply (there really, REALLY should only be one!)
+      (try
+        (setv (. drum-head has-plies) (extract-number (get-default v "Ply")))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Ply' key.\n")))
+
+                                ; Thickness
+      (try
+        (setv (. drum-head has-thickness) (extract-number (get v "Total Thickness")))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Thickness' key.\n")))
+
+                                ; Surface
+      (try
+        (let [surface-lst []]
+          (for [surface-val (.split (get v "Surface") ", ")]
+            (cond [(= surface-val "Synthetic Fiber") (surface-lst.append
+                                                       (Surface "SimulatedSkin"))]
+                  [(= surface-val "Coated") (surface-lst.append (Surface "Coated"))]
+                  [(= surface-val "Clear") (surface-lst.append (Surface "Clear"))]
+                  [(= surface-val "Etched") (surface-lst.append (Surface "Etched"))]
+                  [(= surface-val "Suede") (surface-lst.append (Surface "Suede"))]
+                  [(= surface-val "Hazy") (surface-lst.append (Surface "Hazy"))]
+                  [(= surface-val "Frosted") (surface-lst.append (Surface "Frosted"))]
+                  [(= surface-val "Ebony") (surface-lst.append (Surface "Ebony"))]))
+          (.extend (. drum-head has-surface) surface-lst))
+        (except [KeyError]
+          (f.write f"{k} is missing the 'Surface' key.\n")))
+
+      ; Dampening
+      (try
+        (for [damp-val (.split (get v "Special Features") ", ")]
+          (cond [(= damp-val "Control Dot (topside)")
+                  (.append (. drum-head has-dampening) (Dampening "CenterDot"))]
+                [(= damp-val "Control Dot (underside)")
+                 (.append (. drum-head has-dampening) (Dampening "ReverseDot"))]
+                [(= damp-val "Control Ring(s)")
+                 (.append (. drum-head has-dampening) (Dampening "ControlRing"))]
+                [(= damp-val "Removable Dampening")
+                 (.append (. drum-head has-dampening) (Dampening "RemovableDampening"))]
+                [(= damp-val "Oil Dampening")
+                 (.append (. drum-head has-dampening) (Dampening "Oil"))]
+                [(= damp-val "Drilled Vent Holes")
+                 (.append (. drum-head has-dampening) (Dampening "Holes"))]
+                [(= damp-val "Inlay Ring(s)")
+                 (.append (. drum-head has-dampening) (Dampening "InlayRing"))]
+                [True (f.write f"{k} has additional special feature(s): {damp-val}")]))
+         (except [KeyError]
+           (f.write f"{k} is missing the 'Special Features' key.\n"))))))
+
 (onto.save "test_ontologies/drums_cymbals.owl")
 
